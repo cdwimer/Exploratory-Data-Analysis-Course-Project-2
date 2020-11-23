@@ -13,13 +13,15 @@ if(!file.exists("Source_Classification_Code.rds") | !file.exists("Source_Classif
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
+baltimore <- subset(NEI, fips == "24510")
 
-# sum of emission data per year
-totalEmissions <- tapply(NEI$Emissions, NEI$year, sum)
+# summing emissions per year
+totalEmissions <- tapply(baltimore$Emissions, baltimore$year, sum)
 
-png("plot1.png")
+png("plot2.png")
 
-# plot data
-barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total PM2.5 Emissions Per Year")
+# plotting
+barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", 
+        main = "Total PM2.5 Emissions Per Year in Baltimore City, MD")
 
 dev.off()
