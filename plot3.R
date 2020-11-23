@@ -13,16 +13,20 @@ if(!file.exists("Source_Classification_Code.rds") | !file.exists("Source_Classif
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-library(ggplot2)
-
 # sum of emissions/year/type
 baltimore <- subset(NEI, fips == "24510")
 totalEmissions <- aggregate(Emissions ~ year + type, baltimore, sum)
 
 # plot data
+library(ggplot2)
+
 
 graph <- ggplot(totalEmissions, aes(year, Emissions, color = type))
-graph + geom_line(linetype = "dashed") + geom_point() + scale_x_continuous(breaks=c(1999,2002, 2005, 2008)) +
-    labs(title = "Source of Total PM2.5 Emissions per Year in Baltimore", x = "Year", y = "Total Emissions (tons)", color = "Source")
+graph + geom_line(linetype = "dashed") + 
+    geom_point() + 
+    scale_x_continuous(breaks=c(1999, 2002, 2005, 2008)) +
+    labs(title = "Type of Total PM2.5 Emissions per Year in Baltimore", x = "Year", y = "Total Emissions (tons)", color = "Type of Source") + 
+    theme_bw() + 
+    theme(legend.position = "bottom")
 
-ggsave("plot3.png")
+ggsave("plot3.png", width = 6, height = 4)
