@@ -15,13 +15,12 @@ SCC <- readRDS("Source_Classification_Code.rds")
 
 baltimore <- subset(NEI, fips == "24510")
 
-# summing emissions per year
+# sum of emissions/year
 totalEmissions <- tapply(baltimore$Emissions, baltimore$year, sum)
 
+# plot data
 png("plot2.png")
 
-# plotting
-barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", 
-        main = "Total PM2.5 Emissions Per Year in Baltimore City, MD")
+barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total PM2.5 Emissions Per Year in Baltimore City, MD")
 
 dev.off()
