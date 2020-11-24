@@ -13,7 +13,7 @@ if(!file.exists("Source_Classification_Code.rds") | !file.exists("Source_Classif
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-# 
+# subset coal and aggregate
 coal <- grepl("coal", SCC$Short.Name, ignore.case=TRUE)
 subsetSCC <- SCC[coal, ]
 NEISCC <- merge(NEI, subsetSCC, by="SCC")

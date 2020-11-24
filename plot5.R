@@ -13,7 +13,7 @@ if(!file.exists("Source_Classification_Code.rds") | !file.exists("Source_Classif
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-# 
+# subset vehicle and sum emissions
 baltimore <- subset(NEI, fips == "24510")
 vehicles <- grepl("vehicle", SCC$Short.Name, ignore.case=TRUE)
 subsetSCC <- SCC[vehicles, ]

@@ -13,7 +13,7 @@ if(!file.exists("Source_Classification_Code.rds") | !file.exists("Source_Classif
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
-# sum of emissions/year/type
+# subset type and sum of emissions/year
 baltimore <- subset(NEI, fips == "24510")
 totalEmissions <- aggregate(Emissions ~ year + type, baltimore, sum)
 
