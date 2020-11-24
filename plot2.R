@@ -21,6 +21,6 @@ totalEmissions <- tapply(baltimore$Emissions, baltimore$year, sum)
 # plot data
 png("plot2.png")
 
-barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total PM2.5 Emissions Per Year in Baltimore City, MD")
+barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total PM2.5 Emissions Per Year in Baltimore, MD")
 
 dev.off()

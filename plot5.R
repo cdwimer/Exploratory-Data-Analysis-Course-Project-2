@@ -14,15 +14,15 @@ NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
 # 
-coal <- grepl("coal", SCC$Short.Name, ignore.case=TRUE)
-subsetSCC <- SCC[coal, ]
-NEISCC <- merge(NEI, subsetSCC, by="SCC")
+baltimore <- subset(NEI, fips == "24510")
+vehicles <- grepl("vehicle", SCC$Short.Name, ignore.case=TRUE)
+subsetSCC <- SCC[vehicles, ]
+NEISCC <- merge(baltimore, subsetSCC, by="SCC")
 totalEmissions <- tapply(NEISCC$Emissions, NEISCC$year, sum)
 
 # plotting
-png("plot4.png")
+png("plot5.png")
 
-barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total Coal-Combustion Related PM2.5 Emmissions \nper Year Across the United States")
+barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total Motor-Vehicle PM2.5 Emmissions \nper Year in Baltimore, MD")
 
 dev.off()
-

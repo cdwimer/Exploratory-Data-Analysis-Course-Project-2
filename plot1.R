@@ -20,6 +20,6 @@ totalEmissions <- tapply(NEI$Emissions, NEI$year, sum)
 # plot data
 png("plot1.png")
 
-barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total PM2.5 Emissions Per Year")
+barplot(totalEmissions, xlab = "Year", ylab = "Total Emissions (tons)", main = "Total PM2.5 Emissions Per Year in the United States")
 
 dev.off()

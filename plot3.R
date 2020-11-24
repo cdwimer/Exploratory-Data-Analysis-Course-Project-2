@@ -25,7 +25,7 @@ graph <- ggplot(totalEmissions, aes(year, Emissions, color = type))
 graph + geom_line(linetype = "dashed") + 
     geom_point() + 
     scale_x_continuous(breaks=c(1999, 2002, 2005, 2008)) +
-    labs(title = "Type of Total PM2.5 Emissions per Year in Baltimore", x = "Year", y = "Total Emissions (tons)", color = "Type of Source") + 
+    labs(title = "Type of Total PM2.5 Emissions per Year in Baltimore, MD", x = "Year", y = "Total Emissions (tons)", color = "Type of Source") + 
     theme_bw() + 
     theme(legend.position = "bottom")
 
